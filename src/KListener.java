@@ -12,7 +12,9 @@ public class KListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+		String text = KeyEvent.getKeyText(e.getKeyCode());
+		System.out.println("keyPressed="+text);
+		core.addText(text);
 	}
 
 	@Override
