@@ -3,8 +3,11 @@ import java.awt.event.KeyListener;
 
 public class KListener implements KeyListener {
 	
+	private Core core;
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
+		
 	}
 
 	@Override
