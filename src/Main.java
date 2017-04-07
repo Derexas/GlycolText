@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 public class Main {
 	
 	private static ArrayList<Character> text = new ArrayList<Character>();
@@ -20,36 +22,23 @@ public class Main {
 		for (int i = 0; i < 5; i++)
 			System.out.println("\n");
 	}
+	
+	public static void initJFrame()
+	{
+		JFrame f = new JFrame();
+		f.setTitle("Simple example");
+        f.setSize(300, 200);
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SPanel sp = new SPanel();
+		f.add(sp);
+		f.setVisible(true);
+	}
 
 	public static void main(String[] args)
 	{
 		
-		EventQueue.invokeLater(() -> {
-            SFrame ex = new SFrame();
-            ex.setVisible(true);
-        });
+		initJFrame();
 	}
 
-}
-
-class KeyboardListener implements KeyListener {
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		System.out.println("ejhfb");
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
