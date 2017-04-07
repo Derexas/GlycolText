@@ -31,6 +31,8 @@ public class Main {
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         SPanel sp = new SPanel();
+    	KListener listener = new KListener();
+    	sp.addKeyListener(listener);
 		f.add(sp);
 		f.setVisible(true);
 	}
