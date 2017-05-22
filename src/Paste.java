@@ -1,9 +1,14 @@
 
-public class Paste implements Command
-{
+public class Paste extends TextCommand
+{	
+	
+	public Paste(Text text) {
+		super(text);
+	}
+
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-		
+		this.text.addText(this.text.getSelection(), this.text.getCursorPos());
 	}
+	
 }

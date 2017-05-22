@@ -19,11 +19,6 @@ public class Core {
 		this.invoker.addCommand("Paste", new Paste(text));
 	}
 	
-	public void addText(String s, int pos)
-	{
-		text.addText(s, pos);
-	}
-	
 	public void clear(String s)
 	{
 		for (int i = 0; i < 5; i++)
