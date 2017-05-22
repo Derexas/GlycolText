@@ -2,15 +2,15 @@ import java.util.ArrayList;
 
 public class Core {
 	
-	private ArrayList<Character> text = new ArrayList<Character>();
 	private Invoker ivk;
+	private Text text;
+	private ArrayList<Memento> states;
 	
 	private int selectB, selectE;
 	
-	public void addText(String s)
+	public void addText(String s, int pos)
 	{
-		for (char c : s.toCharArray())
-			text.add(c);
+		text.addText(s, pos);
 	}
 	
 	public void clear(String s)

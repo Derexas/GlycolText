@@ -10,18 +10,19 @@ import javax.swing.InputMap;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
 public class GUI extends JFrame implements KeyListener
 {
 	private JTextArea ta;
 	private JScrollPane scpane;
-	private JToolBar toolBar;
 	
-	public GUI()
+	private Core core;
+	
+	public GUI(Core core)
 	{
 	    super("Editeur de texte");
+	    this.core = core;
 	    setSize(600, 600);
 	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
