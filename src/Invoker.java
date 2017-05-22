@@ -1,14 +1,21 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Invoker {
 	
-	private ArrayList<Command> text = new ArrayList<Command>();
+	private HashMap<String, Command> commands;
+	
+	public Invoker()
+	{
+		this.commands = new HashMap<String, Command>();
+	}
 
-	public void addCommand(Command c){
-		text.add(c);
+	public void addCommand(String commandName, Command command)
+	{
+		commands.put(commandName, command);
 	}
 	
-	public void run(){
-		
+	public void execCommand(String commandName)
+	{
+		commands.get(commandName).execute();
 	}
 }

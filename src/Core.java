@@ -2,11 +2,16 @@ import java.util.ArrayList;
 
 public class Core {
 	
-	private Invoker ivk;
 	private Text text;
 	private ArrayList<Memento> states;
 	
-	private int selectB, selectE;
+	private Invoker invoker;
+	
+	public Core()
+	{
+		states = new ArrayList<Memento>();
+		invoker = new Invoker();
+	}
 	
 	public void addText(String s, int pos)
 	{

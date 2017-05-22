@@ -1,6 +1,9 @@
 
-public class Paste extends Command {
-	public void exec(){
+public class Paste implements Command
+{
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
 		
 	}
 }
