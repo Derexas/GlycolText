@@ -6,7 +6,7 @@ public class Text implements Originator {
 	private ArrayList<Character> state;
 	
 	private int cursorPos, beginSelect, endSelect;
-	
+	public ArrayList<Character> presspapier; 
 	public Text()
 	{
 		super();
@@ -27,6 +27,10 @@ public class Text implements Originator {
 	public void addText(List<Character> s, int pos)
 	{
 		state.addAll(pos, s);
+	}
+	
+	public Character getText(int i){
+		return state.get(i);
 	}
 	
 	public void removeText(int pos, int removalSize)
