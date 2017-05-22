@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Core {
 	
 	private Text text;
-	private ArrayList<Memento> states;
+	private List<Memento> states;
 	
 	private Invoker invoker;
 	

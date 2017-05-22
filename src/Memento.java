@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Memento {	
 
-	private ArrayList<Character> state;
+	protected ArrayList<Character> state;
 	
 	public Memento()
 	{

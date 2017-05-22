@@ -44,17 +44,20 @@ public class GUI extends JFrame implements KeyListener
 	private void setActions()
 	{
 	    InputMap inputMap = ta.getInputMap();
+		ta.getActionMap().put("Paste", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ctrl+V");
+                core.callCommand(Commands.paste);
+            }
+        });
+	    
 		ta.getActionMap().put("foo", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ctrl+A");
             }
         });
-	    inputMap.put(KeyStroke.getKeyStroke("control A"), "foo");
-		ta.getActionMap().put("foo", new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Ctrl+A");
-            }
-        });
+		
+	    inputMap.put(KeyStroke.getKeyStroke("control V"), "Paste");
 	    inputMap.put(KeyStroke.getKeyStroke("control A"), "foo");
 	}
 	

@@ -1,6 +1,6 @@
 
 public class Paste extends TextCommand
-{	
+{
 	
 	public Paste(Text text) {
 		super(text);
