@@ -12,8 +12,7 @@ public class SPanel extends JPanel {
 
     private void initUI() {
     	ta = new JTextArea();
-        this.add(ta);
-        
+        this.add(ta);   
     }
 
 }

@@ -5,7 +5,7 @@ public class Main {
 	
 	public static void initJFrame()
 	{
-		/*JFrame f = new JFrame();
+		JFrame f = new JFrame();
 		f.setTitle("Simple example");
         f.setSize(300, 200);
         f.setLocationRelativeTo(null);
@@ -14,7 +14,7 @@ public class Main {
     	KListener listener = new KListener();
     	sp.addKeyListener(listener);
 		f.add(sp);
-		f.setVisible(true);*/
+		f.setVisible(true);
 		new GUI();
 	}
 
