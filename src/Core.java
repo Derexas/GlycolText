@@ -1,16 +1,15 @@
-import java.util.ArrayList;
 
 public class Core {
 	
 	private Text text;
-	private List<Memento> states;
+	private States states; 
 	
 	private Invoker invoker;
 	
 	public Core()
 	{
 		this.text = new Text();
-		this.states = new ArrayList<Memento>();
+		this.states = new States();
 		this.invoker = new Invoker();
 		this.createCommands();
 	}
