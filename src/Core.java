@@ -9,8 +9,14 @@ public class Core {
 	
 	public Core()
 	{
-		states = new ArrayList<Memento>();
-		invoker = new Invoker();
+		this.text = new Text();
+		this.states = new ArrayList<Memento>();
+		this.invoker = new Invoker();
+	}
+	
+	private createCommands()
+	{
+		
 	}
 	
 	public void addText(String s, int pos)
