@@ -14,9 +14,9 @@ public class Core {
 		this.invoker = new Invoker();
 	}
 	
-	private createCommands()
+	private void createCommands()
 	{
-		
+		this.invoker.addCommand("Paste", new Paste(text));
 	}
 	
 	public void addText(String s, int pos)

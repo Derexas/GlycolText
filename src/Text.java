@@ -4,6 +4,8 @@ public class Text implements Originator {
 
 	private ArrayList<Character> state;
 	
+	private int cursorPos;
+	
 	public Text()
 	{
 		super();
@@ -34,6 +36,14 @@ public class Text implements Originator {
 	@Override
 	public Memento getMemento() {
 		return new Memento(this.state);
+	}
+
+	public int getCursorPos() {
+		return cursorPos;
+	}
+
+	public void setCursorPos(int cursorPos) {
+		this.cursorPos = cursorPos;
 	}
 
 }
