@@ -12,11 +12,18 @@ public class Core {
 		this.text = new Text();
 		this.states = new ArrayList<Memento>();
 		this.invoker = new Invoker();
+		this.createCommands();
 	}
 	
 	private void createCommands()
 	{
-		this.invoker.addCommand("Paste", new Paste(text));
+		Command paste = new Paste(text);
+		this.invoker.addCommand(Commands.paste, paste);
+	}
+	
+	public void callCommand(Commands command)
+	{
+		invoker.execCommand(command);
 	}
 	
 	public void clear(String s)

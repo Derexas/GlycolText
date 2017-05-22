@@ -2,20 +2,20 @@ import java.util.HashMap;
 
 public class Invoker {
 	
-	private HashMap<String, Command> commands;
+	private HashMap<Commands, Command> commands;
 	
 	public Invoker()
 	{
-		this.commands = new HashMap<String, Command>();
+		this.commands = new HashMap<Commands, Command>();
 	}
 
-	public void addCommand(String commandName, Command command)
+	public void addCommand(Commands commandCode, Command command)
 	{
-		commands.put(commandName, command);
+		commands.put(commandCode, command);
 	}
 	
-	public void execCommand(String commandName)
+	public void execCommand(Commands commandCode)
 	{
-		commands.get(commandName).execute();
+		commands.get(commandCode).execute();
 	}
 }
