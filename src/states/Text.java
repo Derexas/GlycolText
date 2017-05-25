@@ -1,9 +1,6 @@
-package core;
+package states;
 import java.util.ArrayList;
 import java.util.List;
-
-import states.Memento;
-import states.Originator;
 
 public class Text implements Originator {	
 

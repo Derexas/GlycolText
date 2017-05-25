@@ -1,6 +1,7 @@
 package core;
 import commands.*;
 import states.States;
+import states.Text;
 
 public class Core {
 	
@@ -29,7 +30,9 @@ public class Core {
 		invoker.addCommand(Commands.undo, new Undo(text, states));
 		invoker.addCommand(Commands.redo, new Redo(text, states));
 		
-		invoker.addCommand(Commands.moveCursor, new Copy(text));
+		invoker.addCommand(Commands.moveCursor, new Copy(text));		
+		
+		invoker.addCommand(Commands.macro, new Macro(invoker.getHist()));
 	}
 	
 	public void callCommand(Commands command)

@@ -1,5 +1,5 @@
 package commands;
-import core.Text;
+import states.Text;
 
 public abstract class TextCommand implements Command
 {

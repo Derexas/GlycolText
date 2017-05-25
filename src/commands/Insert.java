@@ -2,7 +2,7 @@ package commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Text;
+import states.Text;
 
 public class Insert extends TextCommand
 {	

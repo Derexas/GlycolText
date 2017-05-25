@@ -1,7 +1,7 @@
 package commands;
 import java.util.ArrayList;
 
-import core.Text;
+import states.Text;
 
 public class Cut extends TextCommand{
 

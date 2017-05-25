@@ -1,6 +1,6 @@
 package commands;
-import core.Text;
 import states.States;
+import states.Text;
 
 public abstract class StatesTextCommand extends TextCommand
 {
