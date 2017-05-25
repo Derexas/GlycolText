@@ -1,9 +1,15 @@
+package commands;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Insert extends TextCommand{
+import core.Text;
+
+public class Insert extends TextCommand
+{	
 	private Character c;
-	public Insert(Text text, Character ch){
+	
+	public Insert(Text text, Character ch)
+	{
 		super(text);
 		c = ch;
 	}
@@ -12,6 +18,12 @@ public class Insert extends TextCommand{
 		ArrayList<Character> list = new ArrayList<Character>();
 		list.add(c);
 		text.addText(list, text.getCursorPos());
+		System.out.println("Insert");
+	}
+
+	@Override
+	public Commands getType() {
+		return Commands.insert;
 	}
 
 }

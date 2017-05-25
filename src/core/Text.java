@@ -1,5 +1,9 @@
+package core;
 import java.util.ArrayList;
 import java.util.List;
+
+import states.Memento;
+import states.Originator;
 
 public class Text implements Originator {	
 
@@ -7,6 +11,7 @@ public class Text implements Originator {
 	
 	private int cursorPos, beginSelect, endSelect;
 	public ArrayList<Character> presspapier; 
+	
 	public Text()
 	{
 		super();

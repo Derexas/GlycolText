@@ -1,3 +1,5 @@
+package commands;
+import core.Text;
 
 public abstract class TextCommand implements Command
 {

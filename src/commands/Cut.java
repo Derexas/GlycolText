@@ -1,8 +1,11 @@
+package commands;
 import java.util.ArrayList;
 
-public class Copy extends TextCommand{
+import core.Text;
 
-	public Copy(Text text){
+public class Cut extends TextCommand{
+
+	public Cut(Text text){
 		super(text);
 	}
 	
@@ -12,5 +15,12 @@ public class Copy extends TextCommand{
 			press.add(text.getText(i));
 		}
 		text.presspapier = press;
+		text.removeText(text.getBeginSelect(), text.getEndSelect() - text.getBeginSelect());
 	}
+
+	@Override
+	public Commands getType() {
+		return Commands.cut;
+	}
+
 }

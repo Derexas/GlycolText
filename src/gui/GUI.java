@@ -1,9 +1,14 @@
+package gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -11,6 +16,9 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
+
+import commands.Commands;
+import core.Core;
 
 public class GUI extends JFrame implements KeyListener
 {
@@ -44,21 +52,21 @@ public class GUI extends JFrame implements KeyListener
 	private void setActions()
 	{
 	    InputMap inputMap = ta.getInputMap();
-		ta.getActionMap().put("Paste", new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Ctrl+V");
-                core.callCommand(Commands.paste);
-            }
-        });
+		HashMap<Commands, String[]> actions = new HashMap<Commands, String[]>();
+		actions.put(Commands.paste, new String[]{"Paste", "control V"});
+		actions.put(Commands.copy, new String[]{"Copy", "control C"});
 	    
-		ta.getActionMap().put("foo", new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Ctrl+A");
-            }
-        });
-		
-	    inputMap.put(KeyStroke.getKeyStroke("control V"), "Paste");
-	    inputMap.put(KeyStroke.getKeyStroke("control A"), "foo");
+		Iterator<Entry<Commands, String[]>> it = actions.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry<Commands, String[]> pair = (Map.Entry<Commands, String[]>)it.next();
+			ta.getActionMap().put(pair.getValue()[0], new AbstractAction() {
+	            public void actionPerformed(ActionEvent e) {
+	                System.out.println(pair.getValue()[1]);
+	                core.callCommand(pair.getKey());
+	            }
+	        });
+		    inputMap.put(KeyStroke.getKeyStroke(pair.getValue()[1]), pair.getValue()[0]);
+		}
 	}
 	
 	@Override

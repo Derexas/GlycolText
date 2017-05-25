@@ -1,4 +1,7 @@
+package commands;
 import java.util.ArrayList;
+
+import core.Text;
 
 public class Remove  extends TextCommand{
 
@@ -8,6 +11,12 @@ public class Remove  extends TextCommand{
 	
 	public void execute() {
 		text.removeText(text.getBeginSelect(), text.getEndSelect() - text.getBeginSelect());
+		System.out.println("Remove");
+	}
+
+	@Override
+	public Commands getType() {
+		return Commands.remove;
 	}
 	
 }
