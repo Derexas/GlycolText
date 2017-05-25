@@ -3,17 +3,14 @@ import states.Text;
 
 public class MoveCursor extends TextCommand
 {
-	private int dep;
 	
-	public MoveCursor(Text text, int d)
+	public MoveCursor(Text text)
 	{
-		super(text);
-		dep = d;
-		
+		super(text);		
 	}
 	
 	public void execute() {
-		text.setCursorPos(text.getCursorPos()+dep);
+		text.setCursorPos(text.getCursorPos()+text.getX());
 		System.out.println("Move cursor");
 	}
 

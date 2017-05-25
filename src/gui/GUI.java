@@ -53,8 +53,15 @@ public class GUI extends JFrame implements KeyListener
 	{
 	    InputMap inputMap = ta.getInputMap();
 		HashMap<Commands, String[]> actions = new HashMap<Commands, String[]>();
-		actions.put(Commands.paste, new String[]{"Paste", "control V"});
+
+		actions.put(Commands.remove, new String[]{"Remove", "BACK_SPACE"});
 		actions.put(Commands.copy, new String[]{"Copy", "control C"});
+		actions.put(Commands.cut, new String[]{"Cut", "control X"});
+		actions.put(Commands.paste, new String[]{"Paste", "control V"});
+		actions.put(Commands.undo, new String[]{"Undo", "control U"});
+		actions.put(Commands.redo, new String[]{"Redo", "control R"});
+		/*actions.put(Commands.up, new String[]{"Up", "UP"});
+		actions.put(Commands.down, new String[]{"Down", "DOWN"});*/
 	    
 		Iterator<Entry<Commands, String[]>> it = actions.entrySet().iterator();
 		while (it.hasNext()) {
@@ -67,12 +74,31 @@ public class GUI extends JFrame implements KeyListener
 	        });
 		    inputMap.put(KeyStroke.getKeyStroke(pair.getValue()[1]), pair.getValue()[0]);
 		}
+		
+		ta.getActionMap().put("Left", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("LEFT");
+                core.setCursorMove(-1);
+                core.callCommand(Commands.moveCursor);
+            }
+        });
+	    inputMap.put(KeyStroke.getKeyStroke("LEFT"), "Left");
+		
+		ta.getActionMap().put("Right", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("RIGHT");
+                core.setCursorMove(1);
+                core.callCommand(Commands.moveCursor);
+            }
+        });
+	    inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "Right");
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		//this.ta.insert(e.getKeyChar()+"", this.ta.getCaretPosition());
-		//System.out.println(e);
+		this.core.setCharacter(e.getKeyChar());
+		this.core.callCommand(Commands.insert);
+		System.out.println(e);
 	}
 	
 	@Override

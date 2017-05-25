@@ -5,18 +5,16 @@ import java.util.List;
 import states.Text;
 
 public class Insert extends TextCommand
-{	
-	private Character c;
+{
 	
-	public Insert(Text text, Character ch)
+	public Insert(Text text)
 	{
 		super(text);
-		c = ch;
 	}
 	
 	public void execute() {
 		ArrayList<Character> list = new ArrayList<Character>();
-		list.add(c);
+		list.add(text.getCharacter());
 		text.addText(list, text.getCursorPos());
 		System.out.println("Insert");
 	}

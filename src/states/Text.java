@@ -6,8 +6,10 @@ public class Text implements Originator {
 
 	private ArrayList<Character> state;
 	
-	private int cursorPos, beginSelect, endSelect;
-	public ArrayList<Character> presspapier; 
+	private int cursorPos, x;
+	private int beginSelect, endSelect;
+	private char character;
+	public ArrayList<Character> presspapier;
 	
 	public Text()
 	{
@@ -75,6 +77,22 @@ public class Text implements Originator {
 	public int setEndSelect(int endSelect) {
 		this.endSelect = endSelect;
 		return endSelect;
+	}
+	
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public char getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(char character) {
+		this.character = character;
 	}
 
 }
