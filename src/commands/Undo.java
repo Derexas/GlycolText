@@ -1,0 +1,26 @@
+package commands;
+import core.Text;
+import states.States;
+
+public class Undo extends StatesTextCommand
+{
+
+	public Undo(Text text, States states) {
+		super(text, states);
+	}
+
+	@Override
+	public void execute() {
+		if (states.getI() > 0) {
+			states.setI(states.getI()-1);
+			text.setMememto(states.getState(states.getI()));
+			System.out.println("Undo");
+		}
+	}
+
+	@Override
+	public Commands getType() {
+		return Commands.undo;
+	}
+
+}
