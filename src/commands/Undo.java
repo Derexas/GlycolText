@@ -2,11 +2,14 @@ package commands;
 import states.States;
 import states.Text;
 
-public class Undo extends StatesTextCommand
-{
+public class Undo implements Command
+{	
+	private Text text;
+	private States states;
 
 	public Undo(Text text, States states) {
-		super(text, states);
+		this.text = text;
+		this.states = states;
 	}
 
 	@Override

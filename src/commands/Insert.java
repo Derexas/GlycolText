@@ -2,20 +2,21 @@ package commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.Cursor;
+import core.Editor;
 import states.Text;
 
-public class Insert extends TextCommand
+public class Insert extends CursorEditorCommand
 {
 	
-	public Insert(Text text)
-	{
-		super(text);
+	public Insert(Editor editor, Cursor cursor) {
+		super(editor, cursor);
 	}
-	
+
 	public void execute() {
 		ArrayList<Character> list = new ArrayList<Character>();
-		list.add(text.getCharacter());
-		text.addText(list, text.getCursorPos());
+		list.add(editor.getCharacter());
+		editor.addText(list, cursor.getCursorPos());
 		System.out.println("Insert");
 	}
 

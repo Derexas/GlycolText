@@ -1,20 +1,22 @@
 package commands;
 import java.util.ArrayList;
 
+import core.Editor;
 import states.Text;
 
-public class Copy extends TextCommand{
+public class Copy extends EditorCommand
+{
 
-	public Copy(Text text){
-		super(text);
+	public Copy(Editor editor){
+		super(editor);
 	}
 	
 	public void execute() {
 		ArrayList<Character> press = new ArrayList<Character>();
-		for(int i = text.getBeginSelect(); i<text.getEndSelect(); i++){
-			press.add(text.getText(i));
+		for(int i = editor.getBeginSelect(); i<editor.getEndSelect(); i++){
+			press.add(editor.getText(i));
 		}
-		text.presspapier = press;
+		editor.setClipboard(press);
 		System.out.println("Copy");
 	}
 	

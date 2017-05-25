@@ -1,16 +1,17 @@
 package commands;
-import states.Text;
+import core.Cursor;
+import core.Editor;
 
-public class Paste extends TextCommand
+public class Paste extends CursorEditorCommand
 {
-	
-	public Paste(Text text) {
-		super(text);
+
+	public Paste(Editor editor, Cursor cursor) {
+		super(editor, cursor);
 	}
 
 	@Override
 	public void execute() {
-		this.text.addText(this.text.getSelection(), this.text.getCursorPos());
+		this.editor.addText(this.editor.getSelection(), this.cursor.getCursorPos());
 		System.out.println("Paste");
 	}
 

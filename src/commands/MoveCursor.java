@@ -1,16 +1,16 @@
 package commands;
-import states.Text;
+import core.Cursor;
 
-public class MoveCursor extends TextCommand
+public class MoveCursor implements Command
 {
+	private Cursor cursor;
 	
-	public MoveCursor(Text text)
-	{
-		super(text);		
+	public MoveCursor(Cursor cursor) {
+		this.cursor = cursor;
 	}
-	
+
 	public void execute() {
-		text.setCursorPos(text.getCursorPos()+text.getX());
+		cursor.setCursorPos(cursor.getCursorPos()+cursor.getX());
 		System.out.println("Move cursor");
 	}
 
