@@ -60,6 +60,7 @@ public class GUI extends JFrame implements KeyListener
 		actions.put(Commands.paste, new String[]{"Paste", "control V"});
 		actions.put(Commands.undo, new String[]{"Undo", "control U"});
 		actions.put(Commands.redo, new String[]{"Redo", "control R"});
+		actions.put(Commands.select, new String[]{"Select", "control S"});
 		/*actions.put(Commands.up, new String[]{"Up", "UP"});
 		actions.put(Commands.down, new String[]{"Down", "DOWN"});*/
 	    
