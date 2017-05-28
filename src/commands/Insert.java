@@ -1,10 +1,7 @@
 package commands;
-import java.util.ArrayList;
-import java.util.List;
 
 import core.Cursor;
 import core.Editor;
-import states.Text;
 
 public class Insert extends CursorEditorCommand
 {
@@ -14,10 +11,16 @@ public class Insert extends CursorEditorCommand
 	}
 
 	public void execute() {
-		ArrayList<Character> list = new ArrayList<Character>();
-		list.add(editor.getCharacter());
-		editor.addText(list, cursor.getCursorPos());
-		System.out.println("Insert");
+		int pastePosition = this.cursor.getCursorPos();
+		if (this.editor.selectionExist()) {
+			System.out.println("Insert : remove selection");
+			this.editor.removeText(
+					this.editor.getBeginSelect(), this.editor.getEndSelect());
+			pastePosition = this.editor.getBeginSelect();
+		}
+		editor.addText(editor.getPrintBuffer(), pastePosition);
+		this.editor.unselect();
+		System.out.println("Insert : " + editor.getPrintBuffer().get(0));
 	}
 
 	@Override

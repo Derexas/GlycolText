@@ -1,4 +1,6 @@
 package core;
+import java.util.ArrayList;
+
 import commands.*;
 import gui.GUI;
 import states.States;
@@ -18,8 +20,8 @@ public class Core {
 	public Core()
 	{
 		this.text = new Text();
-		this.editor = new Editor(this.text);
 		this.cursor = new Cursor();
+		this.editor = new Editor(this.text, this.cursor);
 		this.states = new States();
 		this.invoker = new Invoker();
 		this.createCommands();
@@ -59,7 +61,7 @@ public class Core {
 	
 	public void setCharacter(char c)
 	{
-		this.editor.setCharacter(c);
+		this.editor.setPrintBuffer(c);
 	}
 	
 	public void setCursorMove(int x)

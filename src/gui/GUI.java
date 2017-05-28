@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +23,7 @@ import javax.swing.KeyStroke;
 import commands.Commands;
 import core.Core;
 
-public class GUI extends JFrame implements KeyListener
+public class GUI extends JFrame implements KeyListener,MouseListener
 {
 	private JTextArea ta;
 	private JScrollPane scpane;
@@ -62,7 +64,6 @@ public class GUI extends JFrame implements KeyListener
 		actions.put(Commands.paste, new String[]{"Paste", "control V"});
 		actions.put(Commands.undo, new String[]{"Undo", "control U"});
 		actions.put(Commands.redo, new String[]{"Redo", "control R"});
-		actions.put(Commands.select, new String[]{"Select", "control S"});
 		/*actions.put(Commands.up, new String[]{"Up", "UP"});
 		actions.put(Commands.down, new String[]{"Down", "DOWN"});*/
 	    
@@ -97,10 +98,20 @@ public class GUI extends JFrame implements KeyListener
             }
         });
 	    inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "Right");
+
+		ta.getActionMap().put("Select", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("control S");
+                core.setSelection(ta.getSelectionStart(), ta.getSelectionEnd());
+                core.callCommand(Commands.select);
+            }
+        });
+	    inputMap.put(KeyStroke.getKeyStroke("control S"), "Select");
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e)
+	{
 		if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && !e.isControlDown()
 				&& e.getKeyChar() != KeyEvent.VK_BACK_SPACE){
 			e.consume();
@@ -113,14 +124,12 @@ public class GUI extends JFrame implements KeyListener
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		e.consume();
-		
+		e.consume();		
 	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		e.consume();
-		
+		e.consume();		
 	}
 	
 	public void setText(ArrayList<Character> text, int pos)
@@ -133,6 +142,31 @@ public class GUI extends JFrame implements KeyListener
 	    this.ta.setText(builder.toString());
 	    System.out.println(builder.toString());
 	    this.ta.setCaretPosition(pos);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		e.consume();		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		e.consume();		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		e.consume();		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		e.consume();		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		e.consume();		
 	}
 
 }

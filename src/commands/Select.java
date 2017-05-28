@@ -35,7 +35,7 @@ public class Select	 implements Command
 	 			}
 	 			System.out.println("Select 1");
 	 		}
-			if(lastCommand.getType() == Commands.select){
+			if(lastCommand.getType() == Commands.select) {
 	 			if (run){
 	 				if(cursor.getCursorPos()<begin){
 		 				begin = cursor.getCursorPos();
@@ -45,8 +45,7 @@ public class Select	 implements Command
 		 			}
 	 			}	
 	 			System.out.println("Select 2");
-	 		}
-	 		
+	 		}	 		
 	 	}
 
 	 	@Override

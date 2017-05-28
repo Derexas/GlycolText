@@ -8,21 +8,23 @@ import states.Text;
 public class Editor {
 	
 	private int beginSelect, endSelect;
-	private char character;
-	private ArrayList<Character> clipboard;
-	private Text text;	
+	private ArrayList<Character> printBuffer, clipboard;
+	private Text text;
+	private Cursor cursor;
 	
-	public Editor(Text text)
+	public Editor(Text text, Cursor cursor)
 	{
 		this.text = text;
+		this.cursor = cursor;
 		this.clipboard = new ArrayList<Character>();
-		this.beginSelect = this.endSelect = 0;
-		this.character = 0;
+		this.printBuffer = new ArrayList<Character>();
+		this.unselect();
 	}
 	
 	public void addText(List<Character> s, int pos)
 	{
 		text.getText().addAll(pos, s);
+		this.cursor.addToMax(s.size());
 	}
 	
 	public Character getText(int i){
@@ -35,6 +37,13 @@ public class Editor {
 		
 		for (int i = posBegin; i < posEnd; i++)
 			text.getText().remove(posBegin);
+		
+		if (this.cursor.getCursorPos() > posEnd)
+			cursor.setCursorPos(cursor.getCursorPos() - (posEnd - posBegin));
+		else if (this.cursor.getCursorPos() > posBegin)
+			cursor.setCursorPos(posBegin);
+		
+		this.cursor.addToMax(-(posEnd - posBegin));
 	}
 	
 	public List<Character> getSelection()
@@ -63,12 +72,18 @@ public class Editor {
 		return endSelect;
 	}
 
-	public char getCharacter() {
-		return character;
+	public ArrayList<Character> getPrintBuffer() {
+		return this.printBuffer;
 	}
 
-	public void setCharacter(char character) {
-		this.character = character;
+	public void setPrintBuffer(ArrayList<Character> printBuffer) {
+		this.printBuffer.clear();
+		this.printBuffer.addAll(printBuffer);
+	}
+
+	public void setPrintBuffer(char c) {
+		this.printBuffer.clear();
+		this.printBuffer.add(c);
 	}
 
 	public ArrayList<Character> getClipboard() {
@@ -77,6 +92,14 @@ public class Editor {
 
 	public void setClipboard(ArrayList<Character> clipboard) {
 		this.clipboard = clipboard;
+	}
+	
+	public boolean selectionExist() {
+		return !(this.beginSelect == 0 && this.endSelect == 0);
+	}
+	
+	public void unselect() {
+		this.beginSelect = this.endSelect = 0;
 	}
 
 }

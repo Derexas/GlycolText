@@ -2,7 +2,7 @@ package commands;
 import core.Cursor;
 import core.Editor;
 
-public class Paste extends CursorEditorCommand
+public class Paste extends Insert
 {
 
 	public Paste(Editor editor, Cursor cursor) {
@@ -11,8 +11,13 @@ public class Paste extends CursorEditorCommand
 
 	@Override
 	public void execute() {
-		this.editor.addText(this.editor.getSelection(), this.cursor.getCursorPos());
-		System.out.println("Paste");
+		if (this.editor.getClipboard().size() > 0) {
+			this.editor.setPrintBuffer(this.editor.getClipboard());
+			System.out.println("Paste : "+this.editor.getClipboard().toString());
+			super.execute();
+			System.out.println("Paste");
+		} else
+			System.out.println("Can't Paste : clipboard empty");
 	}
 
 	@Override

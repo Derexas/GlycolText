@@ -2,15 +2,16 @@ package core;
 
 public class Cursor {
 	
-	private int cursorPos, x;
+	private int cursorPos, x, max;
 	
 	public Cursor() {
-		this(0, 0);
+		this(0, 0, 0);
 	}
 
-	public Cursor(int cursorPos, int x) {
+	public Cursor(int cursorPos, int x, int max) {
 		this.cursorPos = cursorPos;
 		this.x = x;
+		this.max = max;
 	}
 
 	public int getCursorPos() {
@@ -18,7 +19,8 @@ public class Cursor {
 	}
 
 	public void setCursorPos(int cursorPos) {
-		this.cursorPos = cursorPos;
+		if (cursorPos >= 0 && cursorPos <= max)
+			this.cursorPos = cursorPos;
 	}
 	
 	public int getX() {
@@ -27,6 +29,10 @@ public class Cursor {
 
 	public void setX(int x) {
 		this.x = x;
+	}
+
+	public void addToMax(int max) {
+		this.max += max;
 	}
 
 }

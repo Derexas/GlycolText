@@ -12,12 +12,16 @@ public class Copy extends EditorCommand
 	}
 	
 	public void execute() {
-		ArrayList<Character> press = new ArrayList<Character>();
-		for(int i = editor.getBeginSelect(); i<editor.getEndSelect(); i++){
-			press.add(editor.getText(i));
-		}
-		editor.setClipboard(press);
-		System.out.println("Copy");
+		if (this.editor.selectionExist()) {
+			ArrayList<Character> press = new ArrayList<Character>();
+			for(int i = editor.getBeginSelect(); i<editor.getEndSelect(); i++){
+				press.add(editor.getText(i));
+			}
+			editor.setClipboard(press);
+			System.out.println("Copy");
+		} else
+			System.out.println("Can't Copy : no selection");
+			
 	}
 	
 	public Commands getType()
