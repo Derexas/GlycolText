@@ -11,7 +11,8 @@ public class Select	 implements Command
 	 	private Cursor cursor;
 	 	private List<Command> hist;
 	 	
-	 	public Select(Cursor cursor, List<Command> h) {
+	 	public Select(Cursor cursor, List<Command> h)
+	 	{
 			this.cursor = cursor;
 	 		begin = 1;
 	 		end = 0;
@@ -19,7 +20,8 @@ public class Select	 implements Command
 		 	hist = h;
 	 	}
 
-	 	public void execute() {
+	 	public void execute()
+	 	{
 	 		Command lastCommand = hist.get(hist.size()-1);
 			if (lastCommand.getType() == Commands.select) {
 	 			if (run){
@@ -31,6 +33,7 @@ public class Select	 implements Command
 	 				begin = cursor.getCursorPos();
 	 		 		end = cursor.getCursorPos();
 	 			}
+	 			System.out.println("Select 1");
 	 		}
 			if(lastCommand.getType() == Commands.select){
 	 			if (run){
@@ -41,6 +44,7 @@ public class Select	 implements Command
 		 				end = cursor.getCursorPos();
 		 			}
 	 			}	
+	 			System.out.println("Select 2");
 	 		}
 	 		
 	 	}

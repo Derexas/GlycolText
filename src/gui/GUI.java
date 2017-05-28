@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class GUI extends JFrame implements KeyListener
 	{
 	    super("Editeur de texte");
 	    this.core = core;
+	    this.core.setGUI(this);
 	    setSize(600, 600);
 	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +84,7 @@ public class GUI extends JFrame implements KeyListener
                 System.out.println("LEFT");
                 core.setCursorMove(-1);
                 core.callCommand(Commands.moveCursor);
-                ta.setCaretPosition(ta.getCaretPosition()-1);
+                //ta.setCaretPosition(ta.getCaretPosition()-1);
             }
         });
 	    inputMap.put(KeyStroke.getKeyStroke("LEFT"), "Left");
@@ -92,7 +94,6 @@ public class GUI extends JFrame implements KeyListener
                 System.out.println("RIGHT");
                 core.setCursorMove(1);
                 core.callCommand(Commands.moveCursor);
-                ta.setCaretPosition(ta.getCaretPosition()+1);
             }
         });
 	    inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "Right");
@@ -100,23 +101,38 @@ public class GUI extends JFrame implements KeyListener
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyChar() != e.CHAR_UNDEFINED){
+		if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && !e.isControlDown()
+				&& e.getKeyChar() != KeyEvent.VK_BACK_SPACE){
+			e.consume();
 			this.core.setCharacter(e.getKeyChar());
 			this.core.callCommand(Commands.insert);
+            //ta.setCaretPosition(ta.getCaretPosition()+1);
 			System.out.println(e);
 		}
 	}
 	
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent e) {
+		e.consume();
 		
 	}
 	
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyTyped(KeyEvent e) {
+		e.consume();
 		
+	}
+	
+	public void setText(ArrayList<Character> text, int pos)
+	{    
+	    StringBuilder builder = new StringBuilder(text.size());
+	    for(Character ch: text)
+	    {
+	        builder.append(ch);
+	    }
+	    this.ta.setText(builder.toString());
+	    System.out.println(builder.toString());
+	    this.ta.setCaretPosition(pos);
 	}
 
 }

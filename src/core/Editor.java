@@ -29,12 +29,12 @@ public class Editor {
 		return text.getText().get(i);
 	}
 	
-	public void removeText(int pos, int removalSize)
+	public void removeText(int posBegin, int posEnd)
 	{
-		assert pos+removalSize < text.getText().size();
+		assert posBegin > 0 && posEnd < text.getText().size() && posBegin < posEnd;
 		
-		for (int i = 0; i < removalSize; i++)
-			text.getText().remove(pos);
+		for (int i = posBegin; i < posEnd; i++)
+			text.getText().remove(posBegin);
 	}
 	
 	public List<Character> getSelection()
