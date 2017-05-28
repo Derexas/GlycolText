@@ -1,9 +1,9 @@
 package commands;
-import java.util.List;
 
 import core.Cursor;
 
-public class Select	 implements Command{
+public class Select	 implements Command
+{
 		int begin, end;
 	 	boolean run;
 	 	private Cursor cursor;

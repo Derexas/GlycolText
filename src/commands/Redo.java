@@ -2,14 +2,11 @@ package commands;
 import states.States;
 import states.Text;
 
-public class Redo implements Command
+public class Redo extends StatesTextCommand
 {
-	private Text text;
-	private States states;
 
 	public Redo(Text text, States states) {
-		this.text = text;
-		this.states = states;
+		super(text, states);
 	}
 
 	@Override
