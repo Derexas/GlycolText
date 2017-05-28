@@ -23,6 +23,7 @@ public class Core {
 		this.cursor = new Cursor();
 		this.editor = new Editor(this.text, this.cursor);
 		this.states = new States();
+		this.states.addState(this.text.getMemento());
 		this.invoker = new Invoker();
 		this.createCommands();
 	}
@@ -49,13 +50,19 @@ public class Core {
 	public void callCommand(Commands command)
 	{
 		invoker.execCommand(command);
-		if (command == Commands.insert) {
-			cursor.setX(1);
-			invoker.execCommand(Commands.moveCursor);
-		} else if (command == Commands.remove) {
-			cursor.setX(-1);
-			invoker.execCommand(Commands.moveCursor);
+		
+		if (this.text.hasGottenNewState()) {
+			
+			this.states.addState(this.text.getMemento());
+			this.states.setI(this.states.getI()+1);
+			this.text.setGotNewState(false);
 		}
+		
+		// Quickfix :(
+		if (this.cursor.getCursorPos() > this.text.getText().size())
+			this.cursor.setCursorPos(this.text.getText().size());
+		// --------
+		
 		gui.setText(this.text.getText(), this.cursor.getCursorPos());
 	}
 	

@@ -14,8 +14,9 @@ public class Undo extends StatesTextCommand
 		if (states.getI() > 0) {
 			states.setI(states.getI()-1);
 			text.setMememto(states.getState(states.getI()));
-			System.out.println("Undo");
-		}
+			System.out.println("Undo : state="+states.getI());
+		} else
+			System.out.println("Can't Undo : no before state");
 	}
 
 	@Override

@@ -117,8 +117,7 @@ public class GUI extends JFrame implements KeyListener,MouseListener
 			e.consume();
 			this.core.setCharacter(e.getKeyChar());
 			this.core.callCommand(Commands.insert);
-            //ta.setCaretPosition(ta.getCaretPosition()+1);
-			System.out.println(e);
+			//System.out.println(e);
 		}
 	}
 	

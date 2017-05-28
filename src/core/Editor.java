@@ -25,6 +25,8 @@ public class Editor {
 	{
 		text.getText().addAll(pos, s);
 		this.cursor.addToMax(s.size());
+		this.cursor.setCursorPos(this.cursor.getCursorPos()+s.size());
+		this.text.setGotNewState(true);
 	}
 	
 	public Character getText(int i){
@@ -35,15 +37,16 @@ public class Editor {
 	{
 		assert posBegin > 0 && posEnd < text.getText().size() && posBegin < posEnd;
 		
-		for (int i = posBegin; i < posEnd; i++)
-			text.getText().remove(posBegin);
-		
 		if (this.cursor.getCursorPos() > posEnd)
 			cursor.setCursorPos(cursor.getCursorPos() - (posEnd - posBegin));
 		else if (this.cursor.getCursorPos() > posBegin)
 			cursor.setCursorPos(posBegin);
 		
+		for (int i = posBegin; i < posEnd; i++)
+			text.getText().remove(posBegin);
+		
 		this.cursor.addToMax(-(posEnd - posBegin));
+		this.text.setGotNewState(true);
 	}
 	
 	public List<Character> getSelection()

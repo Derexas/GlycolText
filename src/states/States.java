@@ -20,7 +20,13 @@ public class States {
 	
 	public void addState(Memento memento)
 	{
+		while(this.i + 1 < this.states.size())
+			this.states.remove(i+1);
 		this.states.add(memento);
+		for (Memento m : states) {
+			System.out.println(m.getState());
+		}
+		System.out.println("new state added : "+(this.states.size()-1));
 	}
 	
 	public int getI()
