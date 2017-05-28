@@ -37,6 +37,8 @@ public class Core {
 		invoker.addCommand(Commands.moveCursor, new MoveCursor(cursor));
 		
 		invoker.addCommand(Commands.macro, new Macro(invoker.getHist()));
+		
+		invoker.addCommand(Commands.select,  new Select(cursor, invoker.getHist()));
 	}
 	
 	public void callCommand(Commands command)

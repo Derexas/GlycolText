@@ -77,10 +77,12 @@ public class GUI extends JFrame implements KeyListener
 		}
 		
 		ta.getActionMap().put("Left", new AbstractAction() {
+			
             public void actionPerformed(ActionEvent e) {
                 System.out.println("LEFT");
                 core.setCursorMove(-1);
                 core.callCommand(Commands.moveCursor);
+                ta.setCaretPosition(ta.getCaretPosition()-1);
             }
         });
 	    inputMap.put(KeyStroke.getKeyStroke("LEFT"), "Left");
@@ -90,6 +92,7 @@ public class GUI extends JFrame implements KeyListener
                 System.out.println("RIGHT");
                 core.setCursorMove(1);
                 core.callCommand(Commands.moveCursor);
+                ta.setCaretPosition(ta.getCaretPosition()+1);
             }
         });
 	    inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "Right");
@@ -97,9 +100,11 @@ public class GUI extends JFrame implements KeyListener
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		this.core.setCharacter(e.getKeyChar());
-		this.core.callCommand(Commands.insert);
-		System.out.println(e);
+		if (e.getKeyChar() != e.CHAR_UNDEFINED){
+			this.core.setCharacter(e.getKeyChar());
+			this.core.callCommand(Commands.insert);
+			System.out.println(e);
+		}
 	}
 	
 	@Override

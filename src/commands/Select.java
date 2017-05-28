@@ -1,5 +1,7 @@
 package commands;
 
+import java.util.List;
+
 import core.Cursor;
 
 public class Select	 implements Command
@@ -7,26 +9,30 @@ public class Select	 implements Command
 		int begin, end;
 	 	boolean run;
 	 	private Cursor cursor;
-	 	private Command c;
+	 	private List<Command> hist;
 	 	
-	 	public Select(Cursor cursor, Command com) {
+	 	public Select(Cursor cursor, List<Command> h) {
 			this.cursor = cursor;
 	 		begin = 1;
 	 		end = 0;
 	 		run = false;
-		 	this.c = com;
+		 	hist = h;
 	 	}
 
 	 	public void execute() {
-	 		
-			if (c.getType() == Commands.select) {
+	 		Command lastCommand = hist.get(hist.size()-1);
+			if (lastCommand.getType() == Commands.select) {
 	 			if (run){
 	 				run = false;
 	 				begin = 1;
 	 		 		end = 0;
-	 			}else run = true;
+	 			}else {
+	 				run = true;
+	 				begin = cursor.getCursorPos();
+	 		 		end = cursor.getCursorPos();
+	 			}
 	 		}
-			if(c.getType() == Commands.moveCursor){
+			if(lastCommand.getType() == Commands.select){
 	 			if (run){
 	 				if(cursor.getCursorPos()<begin){
 		 				begin = cursor.getCursorPos();
