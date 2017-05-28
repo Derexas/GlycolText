@@ -1,5 +1,4 @@
 package core;
-import java.util.ArrayList;
 
 import commands.*;
 import gui.GUI;
@@ -42,7 +41,8 @@ public class Core {
 		
 		invoker.addCommand(Commands.moveCursor, new MoveCursor(cursor));
 		
-		invoker.addCommand(Commands.macro, new Macro(invoker.getHist()));
+		Macro macro = new Macro();
+		invoker.addCommand(Commands.launchmacro, macro);
 		
 		invoker.addCommand(Commands.select, new Select(cursor, invoker.getHist()));
 	}
