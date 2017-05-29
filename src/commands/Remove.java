@@ -12,11 +12,16 @@ public class Remove extends CursorEditorCommand
 	}
 	
 	public void execute() {
-		if (!this.editor.selectionExist())
-			editor.removeText(this.cursor.getCursorPos()-1, this.cursor.getCursorPos());
-		else
-			editor.removeText(editor.getBeginSelect(), editor.getEndSelect());
-		System.out.println("Remove");
+		if(cursor.getCursorPos()>0){
+			if (!this.editor.selectionExist())
+				editor.removeText(this.cursor.getCursorPos()-1, this.cursor.getCursorPos());
+			else
+				editor.removeText(editor.getBeginSelect(), editor.getEndSelect());
+			System.out.println("Remove");	
+		}else{
+			System.out.println("Can't remove");
+		}
+		
 	}
 
 	@Override
