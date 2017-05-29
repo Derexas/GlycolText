@@ -44,7 +44,7 @@ public class Core {
 		Macro macro = new Macro();
 		invoker.addCommand(Commands.launchmacro, macro);
 		
-		invoker.addCommand(Commands.select, new Select(cursor, invoker.getHist()));
+		invoker.addCommand(Commands.select, new Select(editor, cursor, invoker.getHist()));
 	}
 	
 	public void callCommand(Commands command)

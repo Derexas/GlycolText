@@ -11,6 +11,7 @@ public class Paste extends Insert
 
 	@Override
 	public void execute() {
+		System.out.println(editor.getBeginSelect()+" "+editor.getEndSelect());
 		if (this.editor.getClipboard().size() > 0) {
 			this.editor.setPrintBuffer(this.editor.getClipboard());
 			System.out.println("Paste : "+this.editor.getClipboard().toString());

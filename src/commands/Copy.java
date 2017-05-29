@@ -12,6 +12,7 @@ public class Copy extends EditorCommand
 	}
 	
 	public void execute() {
+		System.out.println(editor.getBeginSelect()+" "+editor.getEndSelect());
 		if (this.editor.selectionExist()) {
 			ArrayList<Character> press = new ArrayList<Character>();
 			for(int i = editor.getBeginSelect(); i<editor.getEndSelect(); i++){

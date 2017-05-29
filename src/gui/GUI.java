@@ -65,6 +65,7 @@ public class GUI extends JFrame implements KeyListener,MouseListener
 		actions.put(Commands.undo, new String[]{"Undo", "control U"});
 		actions.put(Commands.redo, new String[]{"Redo", "control R"});
 		actions.put(Commands.macro, new String[]{"Macro", "control M"});
+		actions.put(Commands.select, new String[]{"Select", "control P"});
 		actions.put(Commands.launchmacro, new String[]{"LaunchMacro", "control L"});
 		/*actions.put(Commands.up, new String[]{"Up", "UP"});
 		actions.put(Commands.down, new String[]{"Down", "DOWN"});*/
